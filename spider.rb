@@ -3,11 +3,11 @@ $:.unshift File.join(File.dirname(__FILE__), "..", "lib")
 require 'rubygems'
 require 'mechanize'
 
-a = Mechanize.new { |agent|
+mech = Mechanize.new { |agent|
   agent.user_agent_alias = 'Mac Safari'
 }
 
-a.get('http://google.com/') do |page|
+mech.get('http://google.com/') do |page|
   search_result = page.form_with(:name => 'f') do |search|
     search.q = 'Hello world'
   end.submit
